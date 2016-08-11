@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 RUN apt-get update && \
-    apt-get install -y python python-numpy
-COPY demo.py /bin/demo.py
-RUN chmod 755 /bin/demo.py
-ENTRYPOINT ["/bin/demo.py"]
+    apt-get install -y gcc
+COPY demo.c /bin/demo.c
+RUN gcc /bin/demo.c -o sover
+ENTRYPOINT ["/bin/sover"]
